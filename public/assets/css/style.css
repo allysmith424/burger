@@ -15,13 +15,13 @@ body {
 	line-height: 1.7;
 	box-sizing: border-box;
 	text-align: center;
-	background-size: cover;
+/*	background-size: cover;
 	background-position: top;
 	background-image: linear-gradient(
 		to right bottom,
 		rgba(227, 225, 232, 0.6),
 		rgba(227, 225, 232, 0.6)),
-	url(burgerBackground.jpg);
+	url(../css/burgerBackground.jpg);*/
 	font-family: 'Mukta Mahee', sans-serif;
 }
 
