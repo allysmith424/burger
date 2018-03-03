@@ -1,10 +1,8 @@
 var orm = require("../config/orm.js");
 
-var burgers = {
+var burger = {
 
 	selectAll: function(cb) {
-
-		console.log("Select all attempt");
 
 		orm.selectAll("burgers", function(res) {
 
@@ -16,7 +14,19 @@ var burgers = {
 
 	insertOne: function(col1, col2, val, cb) {
 
-		orm.insertOne("cats", col1, col2, val, function(res) {
+		orm.insertOne("burgers", col1, col2, val, function(res) {
+
+			cb(res);
+
+		});
+
+	},
+
+	updateOne: function(col, val, cb) {
+
+		console.log("Update one attempt");
+
+		orm.updateOne("burgers", "devoured", true, false, function() {
 
 			cb(res);
 
@@ -26,4 +36,4 @@ var burgers = {
 
 };
 
-module.exports = burgers;
+module.exports = burger;

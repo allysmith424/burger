@@ -9,7 +9,7 @@ var orm = {
 
 		connection.query(queryString, function(err, result) {
 
-			console.log(result);
+			cb(result);
 
 		});
 
@@ -17,25 +17,44 @@ var orm = {
 
 	insertOne: function(table, col1, col2, val, cb) {
 
-		var queryString = "INSERT INTO ?? (??, ??) VALUES (?, ?)";
-
 		var queryString = "INSERT INTO ";
 		queryString += table;
 		queryString += " ("
 		queryString += col1;
 		queryString += ", ";
 		queryString += col2;
-		queryString += ") VALUES (";
+		queryString += ") VALUES ('";
 		queryString += val
-		queryString += ", false)";
-
-		console.log(queryString);
+		queryString += "', false)";
 
 		connection.query(queryString, function(err, result) {
 
 			if (err) throw err;
 
 			console.log(result);
+
+			cb(result);
+
+		});
+
+	},
+
+	updateOne: function(table, col, val, cb) {
+
+		var queryString = "UPDATE ";
+		queryString += table;
+		queryString += " SET ";
+		queryString += col;
+		queryString += " WHERE ";
+		queryString += condition;
+
+		connection.query(queryString, function(err, result) {
+
+			if (err) throw err;
+
+			console.log(result);
+
+			cb(result);
 
 		});
 
