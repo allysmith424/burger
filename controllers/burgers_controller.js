@@ -22,9 +22,17 @@ router.get("/", function(req, res) {
 
 router.post("/api/burgers", function(req, res) {
 
+  console.log("Insert one attempt");
+
 	burger.insertOne("burger_name", "devoured", req.body.burger, function(result) {
 
-		res.JSON({ id: result.insertId });
+    console.log("Heard from burger.js, result below");
+
+    console.log(result);
+
+    console.log("Sending the result as the res back to the client-side js");
+
+    res.json(result);
 
 	});
 
@@ -34,16 +42,20 @@ router.put("/api/burgers/:id", function(req, res) {
   
   var condition = "id = " + req.params.id;
 
+  console.log("Trying to update a record (put request) with the condition below");
+
   console.log("condition", condition);
 
   burger.updateOne(condition, function(result) {
+
+    console.log("Heard from burger.js, record was updated, result below");
+
+    console.log(result);
+
+    console.log("Sending the result as a res back to the client-side js");
+
+    res.json(result);
   	
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
   });
 });
 

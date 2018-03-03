@@ -29,7 +29,11 @@ var orm = {
 
 		connection.query(queryString, function(err, result) {
 
+			"Tyring to add to database";
+
 			if (err) throw err;
+
+			console.log("Result from database below");
 
 			console.log(result);
 
@@ -39,18 +43,24 @@ var orm = {
 
 	},
 
-	updateOne: function(table, col, val, cb) {
+	updateOne: function(table, change, condition, cb) {
+
+		console.log("Heard from burger.js, trying to update table witht the query string below");
 
 		var queryString = "UPDATE ";
 		queryString += table;
 		queryString += " SET ";
-		queryString += col;
+		queryString += change;
 		queryString += " WHERE ";
 		queryString += condition;
+
+		console.log(queryString);
 
 		connection.query(queryString, function(err, result) {
 
 			if (err) throw err;
+
+			console.log("Updated database, result below");
 
 			console.log(result);
 

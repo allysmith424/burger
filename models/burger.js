@@ -14,7 +14,13 @@ var burger = {
 
 	insertOne: function(col1, col2, val, cb) {
 
+		console.log("Speaking to ORM");
+
 		orm.insertOne("burgers", col1, col2, val, function(res) {
+
+			console.log("Heard from ORM, result below");
+
+			console.log(res);
 
 			cb(res);
 
@@ -22,11 +28,15 @@ var burger = {
 
 	},
 
-	updateOne: function(col, val, cb) {
+	updateOne: function(condition, cb) {
 
-		console.log("Update one attempt");
+		console.log("Speaking to ORM");
 
-		orm.updateOne("burgers", "devoured", true, false, function() {
+		orm.updateOne("burgers", "devoured = true", condition, function(res) {
+
+			console.log("Heard from ORM, result below");
+
+			console.log(res);
 
 			cb(res);
 
